@@ -1,4 +1,4 @@
-import java.util.Arrays;
+import java.util.Scanner;
 
 public class student {
 
@@ -10,8 +10,8 @@ public class student {
     private String klasa;
     private String ocenyString;
     private String [] ocenyStringTab;
-    private float [] ocenyValueTab;
-    private String srednia;
+    private double [] ocenyValueTab;
+    private String sredniaString;
 
     @Override
     public String  toString() {
@@ -23,14 +23,13 @@ public class student {
                 ", semestr='" + semestr + '\'' +
                 ", klasa='" + klasa + '\'' +
                 ", ocenyString='" + ocenyString + '\'' +
-                ", ocenyStringTab=" + Arrays.toString(ocenyStringTab) +
-                ", srednia='" + srednia + '\'' +
+                ", sredniaString='" + sredniaString + '\'' +
                 '}';
     }
 
     public student(String firstName, String lastName, String przedmiot, String rok,
                    String semestr, String klasa, String ocenyString,
-                   String[] ocenyStringTab,float [] ocenyValueTab, String srednia) {
+                   String[] ocenyStringTab, double[] ocenyValueTab, String srednia) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.przedmiot = przedmiot;
@@ -40,18 +39,18 @@ public class student {
         this.ocenyString = ocenyString;
         this.ocenyStringTab = ocenyStringTab;
         this.ocenyValueTab = ocenyValueTab;
-        this.srednia = srednia;
+        this.sredniaString = srednia;
     }
 
     public String getFirstName() {
         return firstName;
     }
 
-    public float[] getOcenyValueTab() {
+    public double[] getOcenyValueTab() {
         return ocenyValueTab;
     }
 
-    public void setOcenyValueTab(float[] ocenyValueTab) {
+    public void setOcenyValueTab(double[] ocenyValueTab) {
         this.ocenyValueTab = ocenyValueTab;
     }
 
@@ -115,17 +114,109 @@ public class student {
         this.ocenyStringTab = ocenyStringTab;
     }
 
-    public String getSrednia() {
-        return srednia;
+    public String getSredniaString() {
+        return sredniaString;
     }
 
-    public void setSrednia(String srednia) {
-        this.srednia = srednia;
+    public void setSredniaString(String sredniaString) {
+        this.sredniaString = sredniaString;
     }
 
-    private void pobierzDanezKlawiatury() {};
-    private void przeliczDaneDoWartosciLiczbowych(){};
-    private void obliczSredniaOcen () {};
-    private void zamienSredniaNaString (){};
-    private void zapisDoPliku () {};
+    private void pobierzDanezKlawiatury() {
+        Scanner klawiatura = new Scanner(System.in);
+        System.out.print("podaj imie ucznia: ");
+        firstName = klawiatura.nextLine();
+
+        System.out.print("podaj nazwisko ucznia: ");
+        lastName = klawiatura.nextLine();
+
+        System.out.print("podaj przedmiot: ");
+        przedmiot = klawiatura.nextLine();
+
+        System.out.print("podaj oceny oddzielone przecinkiem \n" +
+                "(dopuszczalene oceny " +
+                "to:1,1+,2-,2,2+,3-,3,3+,4-,4,4+,5-,5,5+,6-,6): \n");
+
+        ocenyString = klawiatura.nextLine();
+
+        ocenyStringTab = ocenyString.split(",");
+
+    }
+    private double przeliczDaneDoWartosciLiczbowych(){
+
+        double suma =0;
+
+        for (int i = 0; i <ocenyStringTab.length ; i++) {
+
+            switch (ocenyStringTab[i]){
+
+                case "1":
+                    ocenyValueTab[i]=1;
+                    break;
+                case "1+":
+                    ocenyValueTab[i]=1.5;
+                    break;
+                case "2-":
+                    ocenyValueTab[i]=1.75;
+                    break;
+                case "2":
+                    ocenyValueTab[i]=2;
+                    break;
+                case "2+":
+                    ocenyValueTab[i]=2.5;
+                    break;
+                case "3-":
+                    ocenyValueTab[i]=2.75;
+                    break;
+                case "3":
+                    ocenyValueTab[i]=3;
+                    break;
+                case "3+":
+                    ocenyValueTab[i]=3.5;
+                    break;
+                case "4-":
+                    ocenyValueTab[i]=3.75;
+                    break;
+                case "4":
+                    ocenyValueTab[i]=4;
+                    break;
+                case "4+":
+                    ocenyValueTab[i]=4.5;
+                    break;
+                case "5-":
+                    ocenyValueTab[i]=4.75;
+                    break;
+                case "5":
+                    ocenyValueTab[i]=5;
+                    break;
+                case "5+":
+                    ocenyValueTab[i]=5.5;
+                    break;
+                case "6-":
+                    ocenyValueTab[i]=5.75;
+                    break;
+                case "6":
+                    ocenyValueTab[i]=6;
+                    break;
+                default:
+
+
+                    System.out.print("nieprawidlowe dane ");
+                    break;
+            }
+        }
+
+
+
+    private double obliczSredniaOcenValue(){
+            for (int i = 0; i <= ocenyValueTab.length-1; i++) {
+
+                suma = suma+ocenyValueTab[i];
+
+            }
+            return (suma/ocenyValueTab.length);
+        }
+
+    private void zamienSredniaNaString(){}
+    private void zapisDoPliku () {}
 }
