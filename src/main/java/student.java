@@ -142,61 +142,61 @@ public class student {
         ocenyStringTab = ocenyString.split(",");
 
     }
-    private double przeliczDaneDoWartosciLiczbowych(){
+    private void przeliczDaneDoWartosciLiczbowych() {
 
-        double suma =0;
 
-        for (int i = 0; i <ocenyStringTab.length ; i++) {
 
-            switch (ocenyStringTab[i]){
+        for (int i = 0; i < ocenyStringTab.length; i++) {
+
+            switch (ocenyStringTab[i]) {
 
                 case "1":
-                    ocenyValueTab[i]=1;
+                    ocenyValueTab[i] = 1;
                     break;
                 case "1+":
-                    ocenyValueTab[i]=1.5;
+                    ocenyValueTab[i] = 1.5;
                     break;
                 case "2-":
-                    ocenyValueTab[i]=1.75;
+                    ocenyValueTab[i] = 1.75;
                     break;
                 case "2":
-                    ocenyValueTab[i]=2;
+                    ocenyValueTab[i] = 2;
                     break;
                 case "2+":
-                    ocenyValueTab[i]=2.5;
+                    ocenyValueTab[i] = 2.5;
                     break;
                 case "3-":
-                    ocenyValueTab[i]=2.75;
+                    ocenyValueTab[i] = 2.75;
                     break;
                 case "3":
-                    ocenyValueTab[i]=3;
+                    ocenyValueTab[i] = 3;
                     break;
                 case "3+":
-                    ocenyValueTab[i]=3.5;
+                    ocenyValueTab[i] = 3.5;
                     break;
                 case "4-":
-                    ocenyValueTab[i]=3.75;
+                    ocenyValueTab[i] = 3.75;
                     break;
                 case "4":
-                    ocenyValueTab[i]=4;
+                    ocenyValueTab[i] = 4;
                     break;
                 case "4+":
-                    ocenyValueTab[i]=4.5;
+                    ocenyValueTab[i] = 4.5;
                     break;
                 case "5-":
-                    ocenyValueTab[i]=4.75;
+                    ocenyValueTab[i] = 4.75;
                     break;
                 case "5":
-                    ocenyValueTab[i]=5;
+                    ocenyValueTab[i] = 5;
                     break;
                 case "5+":
-                    ocenyValueTab[i]=5.5;
+                    ocenyValueTab[i] = 5.5;
                     break;
                 case "6-":
-                    ocenyValueTab[i]=5.75;
+                    ocenyValueTab[i] = 5.75;
                     break;
                 case "6":
-                    ocenyValueTab[i]=6;
+                    ocenyValueTab[i] = 6;
                     break;
                 default:
 
@@ -205,18 +205,24 @@ public class student {
                     break;
             }
         }
+    }
 
 
 
-    private double obliczSredniaOcenValue(){
-            for (int i = 0; i <= ocenyValueTab.length-1; i++) {
+    private double obliczSredniaOcenValue() {
+        double suma = 0;
+        for (int i = 0; i <= ocenyValueTab.length - 1; i++) {
 
-                suma = suma+ocenyValueTab[i];
+            suma = suma + ocenyValueTab[i];
 
-            }
-            return (suma/ocenyValueTab.length);
+        }
+        return (suma / ocenyValueTab.length);
+    }
+
+
+        private void zamienSredniaNaString(){
+            sredniaString = String.format("%.2f",obliczSredniaOcenValue());
         }
 
-    private void zamienSredniaNaString(){}
-    private void zapisDoPliku () {}
+        private void zapisDoPliku () {}
 }
